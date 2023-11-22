@@ -1,0 +1,43 @@
+site_name: Lawrencium Documentation
+
+nav:
+  - Overview: overview.md
+  - Account:
+      - Getting an Account: accounts/mylrc.md
+      - Logging in: accounts/loggingin.md
+      - Policies: accounts/policies.md
+  - Running Jobs:
+      - Slurm Overview: running/slurm_overview.md
+      - Example Scripts: running/script_examples.md
+      - Monitor Jobs: running/monitor_jobs.md
+      - GNU Parallel: running/gnu_parallel.md
+  - Data Transfer:
+      - Data Transfer Node: datatransfer/datatransfer_node.md
+      - Globus for Lawrencium: datatransfer/globus.md
+  - Software:
+      - Software Module Farm: software/software-module-farm.md
+      - Module Management: software/module-management.md
+  - Tutorials:
+      - Using GPU on Jupyter: tutorials/jupyter_gpu.ipynb
+  - Frequently Asked Questions: faqs.md
+
+theme:
+  name: material
+  features:
+    - content.code.annotate
+    - content.code.copy
+
+markdown_extensions:
+  - admonition
+  - pymdownx.arithmatex
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_css:
+  - stylesheets/extra.css
+
+plugins:
+  - mkdocs-jupyter
