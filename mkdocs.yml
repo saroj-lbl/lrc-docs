@@ -23,9 +23,12 @@ nav:
 
 theme:
   name: material
+  palette:
+    primary: teal
   features:
     - content.code.annotate
     - content.code.copy
+    - search.highlight
 
 markdown_extensions:
   - admonition
