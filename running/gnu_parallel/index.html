@@ -1,0 +1,936 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../monitor_jobs/">
+      
+      
+        <link rel="next" href="../../datatransfer/datatransfer_node/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
+    
+    
+      
+        <title>GNU Parallel - Lawrencium Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.fad675c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#basic-usage" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Lawrencium Documentation" class="md-header__button md-logo" aria-label="Lawrencium Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Lawrencium Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              GNU Parallel
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Lawrencium Documentation" class="md-nav__button md-logo" aria-label="Lawrencium Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Lawrencium Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Account
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Account
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounts/mylrc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting an Account
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounts/loggingin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logging in
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accounts/policies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Policies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Running Jobs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Running Jobs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm_overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slurm Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../script_examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example Scripts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitor_jobs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitor Jobs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    GNU Parallel
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    GNU Parallel
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extended-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extended example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Data Transfer
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Data Transfer
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datatransfer/datatransfer_node/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Transfer Node
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datatransfer/globus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Globus for Lawrencium
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Software
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/software-module-farm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Software Module Farm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/module-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Module Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/jupyter_gpu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using GPU on Jupyter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faqs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frequently Asked Questions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extended-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extended example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>GNU Parallel</h1>
+
+<p>GNU Parallel is a shell tool for executing jobs in parallel on one or multiple computers. It’s a helpful tool for automating the parallelization of multiple (often serial) jobs, in particular allowing one to group jobs into a single SLURM submission to take advantage of the multiple cores on a given Lawrencium node.</p>
+<p>A job can be a single core serial task, multi-core or MPI application. A job can also be a command that reads from a pipe. The typical input is a list of parameters required for each task. GNU parallel can then split the input and pipe it into commands in parallel. GNU parallel makes sure output from the commands is the same output as you would get had you run the commands sequentially, and output names can be easily correlated to input file names for easy post-data processing. This makes it possible to use output from GNU parallel as input for other programs.</p>
+<p>Below we’ll show basic usage of GNU parallel and then provide an extended example illustrating submission of a Savio job that uses GNU parallel.</p>
+<p>For full documentation see the GNU parallel man page and GNU parallel tutorial.</p>
+<h2 id="basic-usage">Basic Usage</h2>
+<p>To motivate usage of GNU parallel, consider how you might automate running multiple individual tasks using a simple bash for loop. In this case, our example command involves copying a file. We will copy file1.in to file1.out, file2.in to file2.out, etc.</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">i</span><span class="o">=</span><span class="m">1</span><span class="p">;</span><span class="w"> </span>i<span class="w"> </span>&lt;<span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">;</span><span class="w"> </span>i++<span class="w"> </span><span class="o">))</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+cp<span class="w"> </span>file<span class="si">${</span><span class="nv">i</span><span class="si">}</span>.in<span class="w"> </span>file<span class="si">${</span><span class="nv">i</span><span class="si">}</span>.out
+<span class="k">done</span>
+</code></pre></div>
+<p>That’s fine, but it won’t run the tasks in parallel. Let’s use GNU parallel to do it in parallel:</p>
+<div class="highlight"><pre><span></span><code>parallel<span class="w"> </span>-j<span class="w"> </span><span class="m">2</span><span class="w"> </span>cp<span class="w"> </span>file<span class="o">{}</span>.in<span class="w"> </span>file<span class="o">{}</span>.out<span class="w"> </span>:::<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span>
+ls<span class="w"> </span>file*out
+<span class="c1"># file1.out file2.out file3.out</span>
+</code></pre></div>
+<p>Based on -j, that will use two cores to process the three tasks, staring the third task when a core becomes free from having finished either the first or second task. The ::: syntax separates the input values 1 2 3 from the command being run. Each input value is used in place of {} and cp command is run.</p>
+<h3 id="extended-example">Extended example</h3>
+<p>Here we’ll put it all together (and include even more useful syntax) to parallelize use of the bioinformatics software BLAST across multiple biological input sequences. Below are three sample files, including a SLURM job submission script where GNU parallel launches parallel tasks, a bash file to run a serial task and a task list.</p>
+<p>1) Job submission script:</p>
+<p>e.g., blast.slurm, where gnu-parallel flags are setup and independent tasks are launched in parallel:
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=job-name</span>
+<span class="c1">#SBATCH --account=account_name</span>
+<span class="c1">#SBATCH --partition=partition_name</span>
+<span class="c1">#SBATCH --nodes=2.</span>
+<span class="c1">#SBATCH --time=2:00:00</span>
+<span class="c1">## Command(s) to run (example):</span>
+<span class="c1">#</span>
+module<span class="w"> </span>load<span class="w">  </span>bio/blast/1.13.0<span class="w"> </span>parallel/20200222
+<span class="nb">export</span><span class="w"> </span><span class="nv">WDIR</span><span class="o">=</span>/your/desired/path
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$WDIR</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">JOBS_PER_NODE</span><span class="o">=</span><span class="nv">$SLURM_CPUS_ON_NODE</span>
+<span class="c1">#</span>
+<span class="c1">## when each task is multi-threaded, say NTHREADS=2, then JOBS_PER_NODE should be revised as below</span>
+<span class="c1">## JOBS_PER_NODE=$(( $SLURM_CPUS_ON_NODE  / NTHREADS ))</span>
+<span class="c1">## when memory footprint is large, JOBS_PER_NODE needs to be set ; $SLURM_CPUS_ON_NODE</span>
+<span class="c1">#</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$SLURM_JOB_NODELIST</span><span class="w"> </span><span class="p">|</span>sed<span class="w"> </span>s/<span class="se">\,</span>/<span class="se">\\</span>n/g<span class="p">;</span><span class="w"> </span>hostfile
+<span class="c1">## when GNU parallel can&#39;t detect core# of remote nodes, say --progress/--eta,</span>
+<span class="c1">## core# should be prepended to hostnames. e.g. 32/n0149.savio3</span>
+<span class="c1">## echo $SLURM_JOB_NODELIST |sed s/\,/\\n/g |awk -v cores=$SLURM_CPUS_ON_NODE &#39;{print cores&quot;/&quot;$1}&#39;hostfile&lt;</span>
+<span class="c1">#</span>
+parallel<span class="w"> </span>--jobs<span class="w"> </span><span class="nv">$JOBS_PER_NODE</span><span class="w"> </span>--slf<span class="w"> </span>hostfile<span class="w"> </span>--wd<span class="w"> </span><span class="nv">$WDIR</span><span class="w"> </span>--joblog<span class="w"> </span>task.log<span class="w"> </span>--resume<span class="w"> </span>--progress<span class="w"> </span><span class="se">\</span>
+--colsep<span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span>-a<span class="w"> </span>task.lst<span class="w"> </span>sh<span class="w"> </span>run-blast.sh<span class="w"> </span><span class="o">{}</span><span class="w"> </span>output/<span class="o">{</span>/.<span class="o">}</span>.blst<span class="w"> </span><span class="nv">$NTHREADS</span><span class="w"> </span>
+</code></pre></div></p>
+<ul>
+<li><code>-a</code>: task list as input to GNU parallel</li>
+<li><code>–sshloginfile/-slf</code>: compute node list</li>
+<li><code>–{}</code> : take values from the task list, one line at a time as parameters to the application/serial task (e.g. run-blast.sh)</li>
+<li>`–{/.}``:remove path and file extension</li>
+<li><code>–output/{/.}</code>: specify output/file.blst as the blast result;</li>
+<li><code>–colsep</code>: used as column separator, such as comma, tab, space for the input task list</li>
+<li><code>–jobs</code>: number of tasks per node</li>
+<li><code>–wd</code>: landing work dir on compute nodes, default is $HOME</li>
+<li><code>–joblog</code>: keep track of completed tasks</li>
+<li><code>–resume</code>: used as a checkpoint, allow jobs to resume</li>
+<li><code>–progress</code>: display job progress</li>
+<li><code>–eta</code>: estimated time to finish</li>
+<li><code>–load</code>: threshold for CPU load, e.g. 80%</li>
+<li><code>–noswap</code>: new jobs won’t be started if a node is under heavy memory load</li>
+<li><code>–memfree</code>: check if there is enough free memory, e.g. 2G</li>
+<li><code>–dray-run</code>: display commands to run without execution</li>
+</ul>
+<p>Note: <code>–log logfile</code> pairs with the <code>resume</code> option for production runs.
+A unique name of logfile is recommended, such as <code>$SLURM_JOB_NAME.log</code>
+Otherwise, job rerun will not start when the same logfile exists</p>
+<p>2) Serial bash script:</p>
+<p><div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+module<span class="w"> </span>load<span class="w">  </span>bio/blast/1.13.0<span class="w"> </span>parallel/20200222
+
+blastp<span class="w"> </span>-query<span class="w"> </span><span class="nv">$1</span><span class="w"> </span>-db<span class="w"> </span>../blast/db/img_v400_PROT.00<span class="w"> </span>-out<span class="w"> </span><span class="nv">$2</span><span class="w">  </span>-outfmt<span class="w"> </span><span class="m">7</span><span class="w"> </span>-max_target_seqs<span class="w"> </span><span class="m">10</span><span class="w"> </span>-num_threads<span class="w"> </span><span class="nv">$3</span>
+</code></pre></div>
+where $1, $2 and $3 are the three parameters required for each serial task</p>
+<p>3)  Task list: list of parameters for tasks in the format of one line for one task. The parameters required for each task must to be on the same line separated by an eliminators:</p>
+<p>[user@n0002 ~] cat task.lst
+../blast/data/protein1.faa
+../blast/data/protein2.faa</p>
+<p>In this example, although each task takes three parameters (run-blast.sh), only one parameter is provided in the task list task.lst. The 2nd parameter, which specifies the output, is correlated to output/{/.}.blst in blast.slurm. And the third parameter num_threads is fixed. However, If core# varies from task to task, task.lst could be revised as:</p>
+<p>[user@n0002 ~] cat task.lst
+../blast/data/protein1.faa 2
+../blast/data/protein2.faa 4
+For best practice, test your code on an interactive node before submitting jobs to clusters.</p>
+<p>In addition: task list can a sequence of commands, such as:
+[user@n0002 ~] cat commands.lst
+echo “host = ” ‘<code>hostname</code>’
+sh -c “echo today date = ; date”
+sh -c “echo today date = ; date”</p>
+<p>[user@n0002 ~] parallel -j 2 &lt; commands.lst
+host =  n0148.savio3
+today date = Sat Apr 18 14:07:33 PDT 2020</p>
+<p>GNU Parallel man page
+GPU Parallel tutorial</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.code.copy", "search.highlight"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.cd18aaf1.min.js"></script>
+      
+    
+  </body>
+</html>
